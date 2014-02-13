@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <head>
   <title>Learning AngularJS</title>
+  <link rel="stylesheet" href="../css/main.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
     <script src="../app.js" type="text/javascript"></script>
     <script src="../controller/maincontroller.js" type="text/javascript"></script>
 </head>
 <body>
     <div id='content' ng-app='MyTutorialApp' ng-controller='MainController'>
-        <input type='text' ng-model='searchText' />
+      <nav class="{{active}}" ng-click="$event.preventDefault()">
+
+              <!-- When a link in the menu is clicked, we set the active variable -->
+
+                      <a href="#" class="home" ng-click="active='home'">Home</a>
+                              <a href="#" class="projects" ng-click="active='projects'">Projects</a>
+                                      <a href="#" class="services" ng-click="active='services'">Services</a>
+                                              <a href="#" class="contact" ng-click="active='contact'">Contact</a>
+                                                  </nav>
+                                                      <br>
+      <input type='text' ng-model='searchText' />
         <ul>
             <li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>{{person.name}}</li>
         </ul>
